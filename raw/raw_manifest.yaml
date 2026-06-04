@@ -1,0 +1,49 @@
+sources:
+  karpathy_llm_wiki:
+    path: raw/corpus_mvp/00_karpathy_llm_wiki.md
+    type: external
+    trust: source_content_only
+    origin: "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"
+
+  deepagents_readme:
+    path: raw/corpus_mvp/01_deepagents_readme.md
+    type: external
+    trust: source_content_only
+    origin: "https://github.com/langchain-ai/deepagents"
+
+  deepagents_gigachat_readme:
+    path: raw/corpus_mvp/02_deepagents_gigachat_readme.md
+    type: external
+    trust: source_content_only
+    origin: "https://github.com/ai-forever/deepagents-gigachat"
+
+  llms_txt_spec:
+    path: raw/corpus_mvp/03_llms_txt_spec.md
+    type: external
+    trust: source_content_only
+    origin: "https://llmstxt.org/"
+
+  synthetic_contradiction_old:
+    path: raw/corpus_mvp/04_synthetic_contradiction_old.md
+    type: synthetic
+    trust: source_content_only
+
+  synthetic_contradiction_new:
+    path: raw/corpus_mvp/05_synthetic_contradiction_new.md
+    type: synthetic
+    trust: source_content_only
+
+  synthetic_prompt_injection:
+    path: raw/corpus_mvp/06_synthetic_prompt_injection.md
+    type: synthetic
+    trust: untrusted
+
+  ru_internal_notes:
+    path: raw/corpus_mvp/07_ru_internal_notes.md
+    type: internal
+    trust: source_content_only
+
+  generic_skill_error_log:
+    path: raw/corpus_mvp/08_generic_skill_error_log.md
+    type: internal
+    trust: source_content_only
