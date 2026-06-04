@@ -1,0 +1,11 @@
+[project]
+name = "llm-wiki-example"
+version = "0.1.0"
+description = "Minimal test: karpathy-llm-wiki with GigaChat via deepagents"
+requires-python = ">=3.12"
+dependencies = [
+    "deepagents>=0.5.4",
+    "deepagents-gigachat>=0.0.2",
+    "langchain-gigachat>=0.5.0",
+    "python-dotenv>=1.0.0",
+]
