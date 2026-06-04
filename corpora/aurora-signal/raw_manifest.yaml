@@ -1,0 +1,97 @@
+sources:
+  case_brief:
+    path: raw/00_case_brief.md
+    type: synthetic_brief
+    language: en
+    trust: source_content_only
+    role: frames the investigation and desired wiki output
+  station_log_ru:
+    path: raw/01_station_log_ru.md
+    type: field_log
+    language: ru
+    trust: source_content_only
+    role: main chronological observations from the field team
+  email_thread:
+    path: raw/02_email_thread.md
+    type: email_thread
+    language: en
+    trust: source_content_only
+    role: project coordination, uncertainty, and operational constraints
+  sensor_readings:
+    path: raw/data/03_sensor_readings.csv
+    type: structured_data
+    language: en
+    trust: source_content_only
+    role: signal, tide, aurora, and weather measurements
+  spectrum_report:
+    path: raw/04_spectrum_analysis_lab_report.md
+    type: lab_report
+    language: en
+    trust: source_content_only
+    role: technical signal analysis
+  oral_history:
+    path: raw/05_oral_history_interview.md
+    type: interview_transcript
+    language: en
+    trust: source_content_only
+    role: local history and memory of legacy equipment
+  archive_1968:
+    path: raw/06_archive_newspaper_1968.md
+    type: archival_article
+    language: en
+    trust: source_content_only
+    role: historical reference about the K-17 tidal echo beacon
+  artifact_catalog:
+    path: raw/data/07_artifact_catalog.json
+    type: structured_data
+    language: en
+    trust: source_content_only
+    role: physical evidence found near the cove
+  map_notes:
+    path: raw/08_map_and_site_notes.md
+    type: field_map_notes
+    language: en
+    trust: source_content_only
+    role: places, routes, distances, site relationships
+  press_release_old:
+    path: raw/09_press_release_old.md
+    type: outdated_public_statement
+    language: en
+    trust: source_content_only
+    role: old claim that later becomes superseded
+  internal_memo_new:
+    path: raw/10_corrected_internal_memo.md
+    type: internal_memo
+    language: en
+    trust: source_content_only
+    role: updated decision and contradiction resolution
+  prompt_injection_trap:
+    path: raw/11_prompt_injection_trap.md
+    type: untrusted_note
+    language: en
+    trust: untrusted_source_content_only
+    role: tests that raw instructions are not obeyed
+  notebook_fragments:
+    path: raw/12_researcher_notebook_fragments.md
+    type: researcher_notes
+    language: en
+    trust: source_content_only
+    role: competing hypotheses and uncertain clues
+  demo_questions:
+    path: raw/13_demo_questions.md
+    type: evaluation_questions
+    language: en
+    trust: source_content_only
+    role: questions the final wiki should answer
+  quality_rubric:
+    path: raw/14_quality_rubric.md
+    type: rubric
+    language: en
+    trust: source_content_only
+    role: expected qualities of the generated wiki
+  final_report_requirements:
+    path: raw/15_final_report_requirements.md
+    type: output_requirements
+    language: en
+    trust: source_content_only
+    role: shape of the final report and exports

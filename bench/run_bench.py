@@ -53,9 +53,14 @@ def reset_workspace(project_root: Path, fixture_rel: str, workspace: Path) -> No
     workspace.mkdir(parents=True)
     if fixture.is_dir():
         shutil.copytree(fixture, workspace, dirs_exist_ok=True)
-    for name in ("raw", "tools"):
-        if not (workspace / name).is_dir() and (project_root / name).is_dir():
-            shutil.copytree(project_root / name, workspace / name)
+    corpus = project_root / "corpora" / "technical"
+    if not (workspace / "raw").is_dir() and corpus.is_dir():
+        shutil.copytree(corpus / "raw", workspace / "raw")
+        manifest = corpus / "raw_manifest.yaml"
+        if manifest.is_file():
+            shutil.copy2(manifest, workspace / "raw_manifest.yaml")
+    if not (workspace / "tools").is_dir() and (project_root / "tools").is_dir():
+        shutil.copytree(project_root / "tools", workspace / "tools")
     if not (workspace / "AGENTS.md").is_file() and (project_root / "AGENTS.md").is_file():
         shutil.copy2(project_root / "AGENTS.md", workspace / "AGENTS.md")
 

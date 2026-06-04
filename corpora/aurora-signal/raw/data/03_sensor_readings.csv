@@ -1,0 +1,13 @@
+timestamp,site,freq_410_db,freq_630_db,freq_990_db,aurora_index,tide_level_m,wind_mps,notes
+2026-01-13T20:40:00Z,North Fox Station,-71,-70,-72,7.1,1.8,9,first detected
+2026-01-13T21:27:00Z,North Fox Station,-70,-69,-71,7.5,1.9,10,repeat interval 47s
+2026-01-14T00:12:00Z,Kestrel Cove,-62,-61,-63,6.8,2.9,7,near high tide
+2026-01-14T04:30:00Z,Old Lighthouse Foundation,-66,-65,-67,5.4,2.1,11,fresh tracks near hatch
+2026-01-14T12:00:00Z,Pier Delta,-82,-81,-83,3.2,0.7,14,weak near cable trench
+2026-01-15T21:17:00Z,Kestrel Cove,-51,-50,-52,4.2,3.3,5,signal peak during high tide
+2026-01-16T10:05:00Z,Archive Room,,,,2.5,1.1,4,no measurement; archive discovery
+2026-01-17T18:22:00Z,Sand Spit,-58,-57,-59,5.0,2.8,6,K-17 plate found nearby
+2026-01-18T23:58:00Z,South Tidal Channel,-96,-94,-95,6.6,0.3,3,signal disappeared after ice closure
+2026-01-19T03:52:00Z,South Tidal Channel,-91,-90,-92,6.9,0.5,2,still mostly absent
+2026-01-19T08:15:00Z,Kestrel Cove,-64,-63,-65,4.1,2.6,4,signal returned with moving water
+2026-01-19T09:40:00Z,North Fox Station,-67,-66,-68,3.8,2.4,5,working conclusion drafted

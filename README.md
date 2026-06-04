@@ -37,21 +37,24 @@ H0: Schema + tools + deepagents-gigachat profile are enough.
 ## Project Structure
 
 ```
-raw/corpus_mvp/          9 source documents (4 real + 5 synthetic)
-raw/raw_manifest.yaml    Source registry
-wiki/                    LLM-generated wiki (output)
+corpora/
+  technical/             9-doc LLM-Wiki / DeepAgents corpus
+  aurora-signal/         16-doc investigation demo corpus (multilingual, CSV, JSON)
+wiki/                    LLM-generated wiki (output, starts empty)
 skills/                  Main skill (karpathy-llm-wiki)
-configs/                 4 benchmark configurations (A/B/C/D)
+tools/
+  wiki_lint.py           Structural linter
 bench/
   tasks.yaml             16 benchmark tasks
   run_bench.py           Benchmark runner
   verify/                Verification scripts
-tools/
-  wiki_lint.py           Structural linter
+configs/                 4 benchmark configurations (A/B/C/D)
 fixtures/                Test starting states
-outputs/runs/            Benchmark run outputs
+examples/
+  gigachat-initial-test/ Preserved broken GigaChat output (before fixes)
+outputs/                 Benchmark run outputs (gitignored)
 reports/                 Comparison reports
-demo/                    Best demo wiki
+run_aurora_demo.py       Aurora Signal demo runner
 ```
 
 ## Quick Start

@@ -7,17 +7,17 @@ Read this file at the start of every session. Follow the rules strictly.
 ## Project Structure
 
 ```
-raw/                         ← IMMUTABLE source material (never modify)
-  corpus_mvp/                ← Benchmark corpus (9 source documents)
-  raw_manifest.yaml          ← Source registry
-wiki/                        ← Compiled knowledge (LLM-owned)
+corpora/                     ← Test corpora (immutable source packs)
+  technical/                 ← 9-doc LLM-Wiki / DeepAgents corpus
+  aurora-signal/             ← 16-doc investigation demo corpus
+wiki/                        ← Compiled knowledge (LLM-owned, output)
   <topic>/                   ← One level of topic subdirectories
   index.md                   ← Table-format index
   log.md                     ← Append-only operation log
 tools/                       ← Mechanical tools
   wiki_lint.py               ← Structural linter
 skills/                      ← Agent skills
-configs/                     ← Benchmark configurations
+configs/                     ← Benchmark configurations (A/B/C/D)
 bench/                       ← Benchmark runner and verifiers
 ```
 
