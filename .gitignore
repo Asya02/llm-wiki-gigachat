@@ -6,3 +6,4 @@ dist/
 *.egg-info/
 .obsidian/
 outputs/runs/
+uv.lock
