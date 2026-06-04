@@ -61,7 +61,7 @@ def make_agent():
     from deepagents.backends import FilesystemBackend
 
     model = make_model()
-    backend = FilesystemBackend(root_dir=str(WORKSPACE), virtual_mode=False)
+    backend = FilesystemBackend(root_dir=str(WORKSPACE), virtual_mode=True)
     skill_text = SKILL_PATH.read_text()
 
     return create_deep_agent(
