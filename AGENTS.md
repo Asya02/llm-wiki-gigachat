@@ -23,7 +23,7 @@ bench/                       ← Benchmark runner and verifiers
 
 ## Rules
 
-1. **raw/ is immutable** — never modify or delete files in `raw/`.
+1. **raw/ is immutable** — NEVER create, modify, edit, copy, or delete ANY files in `raw/`. The raw/ directory is read-only input.
 2. **wiki/ is the LLM-owned layer** — create, edit, and delete articles only in `wiki/`.
 3. **Article metadata required** — every wiki article must include `> Sources:` and `> Raw:` on lines 3–4 (see article template).
 4. **Ingest cascade** — every ingest updates both `wiki/index.md` and `wiki/log.md`.
@@ -50,16 +50,7 @@ Run `python tools/wiki_lint.py` → fix deterministic issues → report heuristi
 
 ## Formats
 
-Detailed format examples live in the Karpathy LLM-Wiki skill references:
-
-| Artifact | Template |
-|----------|----------|
-| Raw files | `skills/karpathy-llm-wiki/references/raw-template.md` |
-| Wiki articles | `skills/karpathy-llm-wiki/references/article-template.md` |
-| Index | `skills/karpathy-llm-wiki/references/index-template.md` |
-| Archive | `skills/karpathy-llm-wiki/references/archive-template.md` |
-
-Load the relevant template before creating or editing that artifact type.
+All format examples are in the Karpathy LLM-Wiki skill (loaded as system prompt). Follow the exact formats shown there for raw files, wiki articles, index.md, and log.md.
 
 ## Benchmark
 

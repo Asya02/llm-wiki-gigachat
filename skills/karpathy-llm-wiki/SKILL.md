@@ -19,6 +19,8 @@ Violating any of these is a critical error.
 6. **Use relative paths consistently.** Inside wiki/ files, all paths are relative to the current file. Never use project-root-relative paths (never `wiki/topic/...` from inside wiki/).
 7. **Check before writing.** Before creating any file, check if it already exists. Use edit_file for existing files. Use write_file only for new files.
 8. **Read index.md before querying.** Never guess file paths. Always read wiki/index.md first to find where articles are located.
+9. **Language consistency.** Write wiki articles in the same language as the source material. If the source is in Russian, the article must be in Russian. Do not mix languages within a single article or index section.
+10. **No duplicates.** Before creating a new article, check index.md. If an article on the same topic exists, merge new content into it using edit_file. Never create two articles about the same concept.
 
 ---
 
@@ -62,6 +64,10 @@ Follow these steps in exact order. Do not skip any step.
 Read the provided source content. Identify: title, author/origin, publication date (if known).
 
 ### Step 2: Save to raw/
+
+**If the raw file already exists** (the user says "the raw file is already saved at raw/..."): **SKIP this entire step.** Do NOT create, copy, edit, or move any files in raw/. Proceed directly to Step 3.
+
+**Only if the raw file does NOT exist yet:**
 
 1. Pick a topic directory. Check existing `raw/` subdirectories first. Reuse if topic matches.
 2. Choose a filename: `<slug>.md` where slug is kebab-case from the title, max 60 chars.
@@ -183,8 +189,9 @@ residual connections and layer normalization.
 - Last section (if cross-refs exist): `## See Also` with relative links
 
 **Path rules for Raw links:**
-- From `wiki/<topic>/article.md` to `raw/<topic>/file.md`: use `../../raw/<topic>/file.md`
-- The path goes: up from article → up from topic dir → into raw/ → into topic → file
+- From `wiki/<topic>/article.md` to `raw/file.md`: use `../../raw/file.md` (up twice: out of topic, out of wiki)
+- From `wiki/article.md` (root of wiki, no topic subdir) to `raw/file.md`: use `../raw/file.md` (up once: out of wiki)
+- Rule: count how many directories deep the article is, go up that many levels, then into `raw/`
 
 **Common mistakes to avoid:**
 - Using `## Sources` as a section heading — WRONG (use `> Sources:` blockquote)
