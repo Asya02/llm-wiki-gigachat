@@ -21,6 +21,8 @@ Violating any of these is a critical error.
 8. **Read index.md before querying.** Never guess file paths. Always read wiki/index.md first to find where articles are located.
 9. **Language consistency.** Write wiki articles in the same language as the source material. If the source is in Russian, the article must be in Russian. Do not mix languages within a single article or index section.
 10. **No duplicates.** Before creating a new article, check index.md. If an article on the same topic exists, merge new content into it using edit_file. Never create two articles about the same concept.
+11. **Ground everything in sources.** Wiki articles, query answers, reports, and exports must contain ONLY information traceable to raw/ sources and wiki/ articles. Never fill content from your training data. If specific data is not in the wiki, say "data not available" — do not invent examples, transactions, company names, or numbers.
+12. **Only link to existing pages.** Every markdown link in See Also and in article bodies must point to a file that already exists. Never create links to pages you have not yet created. If a related page does not exist, omit the link.
 
 ---
 
