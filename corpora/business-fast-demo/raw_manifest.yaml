@@ -1,0 +1,31 @@
+sources:
+  case_brief:
+    path: raw/00_case_brief.md
+    type: brief
+    trust: source_content_only
+    used_in_base_build: true
+  customer_complaint_email:
+    path: raw/01_customer_complaint_email.md
+    type: email
+    trust: source_content_only
+    used_in_base_build: true
+  billing_team_notes:
+    path: raw/02_billing_team_notes.md
+    type: team_notes
+    trust: source_content_only
+    used_in_base_build: true
+  invoice_events:
+    path: raw/data/03_invoice_events.csv
+    type: data
+    trust: source_content_only
+    used_in_base_build: true
+  ticket_history:
+    path: raw/data/04_ticket_history.csv
+    type: data
+    trust: source_content_only
+    used_in_base_build: true
+  additional_followup_signal:
+    path: raw/05_additional_followup_signal.md
+    type: followup
+    trust: source_content_only
+    used_in_base_build: false

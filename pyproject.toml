@@ -4,9 +4,11 @@ version = "0.1.0"
 description = "Reproducible benchmark for GigaChat + DeepAgents maintaining an LLM-Wiki"
 requires-python = ">=3.12"
 dependencies = [
+    "arize-phoenix>=17.11.0",
     "deepagents>=0.5.4",
     "deepagents-gigachat>=0.0.2",
     "langchain-gigachat>=0.5.0",
+    "openinference-instrumentation-langchain>=0.1.66",
     "python-dotenv>=1.0.0",
     "pyyaml>=6.0",
 ]

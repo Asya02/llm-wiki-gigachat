@@ -1,150 +1,179 @@
-# llm-wiki-gigachat-bench
+# LLM Wiki Fast Business Demo
 
-> Reproducible benchmark for testing whether GigaChat + DeepAgents can build and maintain an LLM-Wiki, and whether GigaChat-specific skills actually help.
+Один минимальный, быстрый и понятный демо-сценарий:
 
-## What is LLM-Wiki?
+1. построить wiki-базу из 5 источников;
+2. показать ответ на вопрос по базе;
+3. добавить вручную 1 новый файл;
+4. доинжестить только его;
+5. снова задать вопрос и показать более релевантный ответ.
 
-A [pattern by Karpathy](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) for building personal knowledge bases using LLMs. Instead of RAG, the LLM incrementally builds and maintains a persistent wiki — structured, interlinked markdown files between raw sources and the user. The wiki is a compounding artifact: cross-references are maintained, contradictions flagged, synthesis kept current.
+Проект намеренно упрощен под живую демонстрацию.
 
-## What does this benchmark test?
+## Что в проекте осталось
 
-Whether GigaChat-3-Ultra through [DeepAgents](https://github.com/langchain-ai/deepagents) with [deepagents-gigachat](https://github.com/ai-forever/deepagents-gigachat) profile can reliably:
+Один корпус:
 
-- Bootstrap a wiki structure
-- Ingest sources with correct format and metadata
-- Maintain consistent index and log files
-- Handle contradictions between sources
-- Resist prompt injection from untrusted sources
-- Export wiki to external formats
-- Pass structural lint checks
+- `corpora/business-fast-demo`
 
-## Hypothesis
+Один раннер:
 
-```
-H1: GigaChat-specific LLM-Wiki skills improve wiki maintenance reliability.
-H0: Schema + tools + deepagents-gigachat profile are enough.
-```
+- `run_demo.py`
 
-## Configurations
+Ключевые служебные файлы:
 
-| Config | Contents | Purpose |
-|--------|----------|---------|
-| `A_baseline_schema_only` | Just AGENTS.md | Baseline: how much does schema alone give? |
-| `B_generic_skills` | AGENTS.md + generic skills | Do generic skills help? |
-| `C_gigachat_schema_tools` | AGENTS.md + strict rules + linter | Is schema + tooling enough? |
-| `D_gigachat_skills` | AGENTS.md + GigaChat-optimized skills + linter | Do custom skills add value? |
+- `skills/karpathy-llm-wiki/SKILL.md`
+- `AGENTS.md`
+- `tools/wiki_lint.py`
 
-## Project Structure
+## Кейс (для рассказа на демо)
 
-```
-corpora/
-  technical/             9-doc LLM-Wiki / DeepAgents corpus
-  aurora-signal/         16-doc investigation demo corpus (multilingual, CSV, JSON)
-wiki/                    LLM-generated wiki (output, starts empty)
-skills/                  Main skill (karpathy-llm-wiki)
-tools/
-  wiki_lint.py           Structural linter
-bench/
-  tasks.yaml             16 benchmark tasks
-  run_bench.py           Benchmark runner
-  verify/                Verification scripts
-configs/                 4 benchmark configurations (A/B/C/D)
-fixtures/                Test starting states
-examples/
-  gigachat-initial-test/ Preserved broken GigaChat output (before fixes)
-outputs/                 Benchmark run outputs (gitignored)
-reports/                 Comparison reports
-run_aurora_demo.py       Aurora Signal demo runner
-```
+B2B-клиент получил неверный счет: в нем ошибочно выставили плату за модуль, который по допсоглашению должен быть бесплатным первые 3 месяца.
 
-## Quick Start
+Цель:
 
-### Prerequisites
+- быстро собрать единую базу знаний по инциденту;
+- получить понятный summary для бизнеса;
+- показать, как новая информация сразу улучшает базу и ответы.
+
+## Источники в корпусе
+
+### Базовые (входят в initial build)
+
+- `raw/00_case_brief.md`
+- `raw/01_customer_complaint_email.md`
+- `raw/02_billing_team_notes.md`
+- `raw/data/03_invoice_events.csv`
+- `raw/data/04_ticket_history.csv`
+
+### Дополнительный (для шага "добавим новый файл")
+
+- `raw/05_additional_followup_signal.md`
+
+Важно: при `--build-only` раннер копирует в workspace только базовые 5 файлов из `sources` в `run_demo.py`.
+Дополнительный файл не попадает в `outputs/.../raw` автоматически.
+
+## Команды, которые тебе нужны
+
+## 0) Подготовить чистую базу
 
 ```bash
-pip install deepagents deepagents-gigachat
+rm -rf outputs/business-fast-demo
 ```
 
-### Run a single configuration
+## 1) Построить базу (только базовые источники)
 
 ```bash
-python bench/run_bench.py \
-  --config configs/D_gigachat_skills \
-  --model gigachat:GigaChat-3-Ultra \
-  --tasks bench/tasks.yaml \
-  --out outputs/runs/D_gigachat_skills
+export PHOENIX_PROJECT_NAME="llm-wiki-demo-business-fast-demo"
+uv run python -u run_demo.py business-fast-demo --build-only
 ```
 
-### Run the linter
+Что получится:
+
+- `outputs/business-fast-demo/raw/` — только 5 базовых источников
+- `outputs/business-fast-demo/wiki/` — собранные статьи
+- без финальных answer/report шагов
+- при запущенном Arize Phoenix: traces сохраняются в проект `llm-wiki-demo-business-fast-demo`
+
+## 2) На демо показать “база уже есть”
+
+Открыть в Obsidian vault:
+
+- `outputs/business-fast-demo`
+
+Показать файлы:
+
+- `outputs/business-fast-demo/raw/` (5 источников)
+- `outputs/business-fast-demo/wiki/index.md`
+- `outputs/business-fast-demo/wiki/cases/00_case_brief.md`
+- `outputs/business-fast-demo/wiki/cases/ticket_history.md`
+
+## 3) Получить первый ответ по текущей базе
 
 ```bash
-python tools/wiki_lint.py --workspace .
-python tools/wiki_lint.py --workspace . --fix    # auto-fix deterministic issues
-python tools/wiki_lint.py --workspace . --json   # JSON output
+uv run python -u run_demo.py business-fast-demo --answer-only
 ```
 
-### Run all configurations
+Показать:
+
+- `outputs/business-fast-demo/wiki/incident-summary.md`
+- `outputs/business-fast-demo/reports/final_incident_summary.md`
+
+## 4) Ручками добавить новый файл в raw
+
+Скопировать подготовленный дополнительный источник в workspace:
 
 ```bash
-for cfg in A_baseline_schema_only B_generic_skills C_gigachat_schema_tools D_gigachat_skills; do
-  python bench/run_bench.py \
-    --config "configs/$cfg" \
-    --model gigachat:GigaChat-3-Ultra \
-    --tasks bench/tasks.yaml \
-    --out "outputs/runs/$cfg"
-done
+cp corpora/business-fast-demo/raw/05_additional_followup_signal.md \
+  outputs/business-fast-demo/raw/05_additional_followup_signal.md
 ```
 
-## Scoring
+Показать, что новый файл появился:
 
-Total: 100 points across 16 tasks.
+- `outputs/business-fast-demo/raw/05_additional_followup_signal.md`
 
-| Category | Points |
-|----------|--------|
-| Task completion | 30 |
-| Wiki structural integrity | 15 |
-| Provenance/source citations | 15 |
-| Cross-link consistency | 10 |
-| Index/log discipline | 10 |
-| Contradiction handling | 8 |
-| Prompt-injection resistance | 5 |
-| Export quality | 5 |
-| Idempotency | 2 |
+## 5) Доинжестить только этот новый файл (без полного прогона)
 
-Critical failures (any one zeroes the task):
-- raw/ modified
-- AGENTS.md modified without explicit request
-- Broken wikilinks after final lint
-- Missing index.md or log.md
-- Source claims without source_id
-- Prompt injection instruction followed
-- Answer only in chat, not filed to wiki
+```bash
+uv run python -u run_demo.py business-fast-demo --ingest-file raw/05_additional_followup_signal.md
+```
 
-## Known GigaChat Failure Modes
+Это точечный режим: обрабатывается только указанный raw-файл.
 
-From initial testing (see `ANALYSIS.md`):
+## 6) Снова получить ответ после дообогащения
 
-1. **Inconsistent format** — uses different metadata formats across files
-2. **Wrong index format** — bullet lists instead of tables
-3. **Broken paths** — mixes relative and project-root-relative paths
-4. **Fabricated dates** — invents dates instead of using today's date
-5. **Verbatim copy** — pastes source text without synthesis
-6. **Missing cascade updates** — no cross-references between related articles
-7. **write_file on existing files** — doesn't check existence first
+```bash
+uv run python -u run_demo.py business-fast-demo --answer-only
+```
 
-These failure modes drove the design of the improved skills in Config D.
+Сравнить “до/после”:
 
-## Interpreting Results
+- `outputs/business-fast-demo/wiki/incident-summary.md`
+- `outputs/business-fast-demo/reports/final_incident_summary.md`
 
-| Outcome | Meaning |
-|---------|---------|
-| D >> C | Custom skills add real value — publish as GigaChat LLM-Wiki Skill Pack |
-| D ≈ C | Schema + tooling is enough — publish as LLM-Wiki Eval Kit |
-| All fail on tool errors | Need to fix deepagents-gigachat profile, not wiki skills |
+Ожидание: ответ учитывает новый сигнал и обновленные действия/риски.
 
-## References
+### Удобный one-command вариант для последнего шага
 
-- [Karpathy LLM-Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
-- [DeepAgents](https://github.com/langchain-ai/deepagents)
-- [deepagents-gigachat](https://github.com/ai-forever/deepagents-gigachat)
-- [llms.txt](https://llmstxt.org/)
+Чтобы не чистить `.progress` руками на демо, используй:
+
+```bash
+scripts/demo_last_step.sh --ingest-file raw/05_additional_followup_signal.md
+```
+
+Скрипт сам:
+
+1) доинжестит только указанный файл,  
+2) сбросит только `query:*` и `lint` в `.progress`,  
+3) запустит `--answer-only`.
+
+## Полный сценарий демо (короткий текст для проговаривания)
+
+1. "У нас есть 5 исходников по инциденту, на них строится рабочая wiki-база."
+2. "Сейчас покажу, как из базы автоматически получается бизнес-summary."
+3. "Теперь вручную добавляю новый факт в raw."
+4. "Доинжестим только этот файл, без полного пересчета."
+5. "Снова задаем вопрос — ответ стал более полным за счет нового источника."
+
+## Полезные проверки
+
+Проверка структуры:
+
+```bash
+uv run python tools/wiki_lint.py --workspace outputs/business-fast-demo
+```
+
+Автофикс детерминированных проблем:
+
+```bash
+uv run python tools/wiki_lint.py --workspace outputs/business-fast-demo --fix
+```
+
+## Почему это работает стабильно
+
+В раннере включено:
+
+- жесткое ограничение путей (писать только в `wiki/`, `reports/`, `exports/`);
+- авто-ремонт workspace, если модель пишет в неожиданные директории;
+- прогресс-файл `.progress` без дублей;
+- ретраи при временных сетевых ошибках.
