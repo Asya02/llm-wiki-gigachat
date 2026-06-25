@@ -4,6 +4,3 @@ __pycache__/
 *.pyc
 dist/
 *.egg-info/
-.obsidian/
-uv.lock
-outputs/
