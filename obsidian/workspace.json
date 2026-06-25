@@ -1,0 +1,217 @@
+{
+  "main": {
+    "id": "c382670eff5edb1d",
+    "type": "split",
+    "children": [
+      {
+        "id": "336e7872cf7cbc56",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "dbf80fb1253076ac",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Граф"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "f233a536d6d9689c",
+    "type": "split",
+    "children": [
+      {
+        "id": "31f48d7a69c8474c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "84174ca51ac0e0d1",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Файловый менеджер"
+            }
+          },
+          {
+            "id": "f3dfb0936e7a6e1e",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Поиск"
+            }
+          },
+          {
+            "id": "10475348e7b8953b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Закладки"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "831d53b1d464f06f",
+    "type": "split",
+    "children": [
+      {
+        "id": "a3a97235d5582c6d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "12ac33b8c2d3b6e7",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Обратные ссылки"
+            }
+          },
+          {
+            "id": "418aaff465209259",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Исходящие ссылки"
+            }
+          },
+          {
+            "id": "0e1c5aa78b12edf0",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Теги"
+            }
+          },
+          {
+            "id": "d8e247177a5c12b4",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Все свойства"
+            }
+          },
+          {
+            "id": "33b71f9921dfd699",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Без названия.base",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Структура Без названия"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "graph:Граф": false,
+      "canvas:Создать новый холст": false,
+      "markdown-importer:Импорт Markdown-файлов": false,
+      "bases:Создать новую базу": false
+    }
+  },
+  "active": "dbf80fb1253076ac",
+  "lastOpenFiles": [
+    "outputs/routing",
+    "corpora/aurora-signal/raw/13_demo_questions.md",
+    "corpora/aurora-signal/raw/00_case_brief.md",
+    "outputs/client-incident/reports/final_incident_summary.md",
+    "outputs/client-incident/reports",
+    "outputs/client-incident/wiki/contradictions.md",
+    "outputs/client-incident/wiki/incident-timeline.md",
+    "outputs/client-incident/wiki/action_items.md",
+    "outputs/client-incident/wiki/cases/06_invoice_events_chronology.md",
+    "outputs/client-incident/wiki/cases/10_prompt_injection_customer_email.md",
+    "outputs/client-incident/wiki/cases/09_followup_email_to_customer.md",
+    "outputs/client-incident/wiki/cases/08_corrected_customer_status_update.md",
+    "outputs/client-incident/cases/07_old_customer_status_update.md",
+    "outputs/client-incident/wiki/cases/06_meeting_notes_incident_review.md",
+    "outputs/client-incident/wiki/cases/05_product_team_comment.md",
+    "outputs/client-incident/wiki/cases/04_billing_team_notes.md",
+    "outputs/client-incident/cases/00_case_brief.md",
+    "outputs/client-incident/cases",
+    "outputs/client-incident/wiki/log.md",
+    "outputs/client-incident/wiki/cases/00_case_brief.md",
+    "outputs/client-incident/wiki/cases",
+    "outputs/client-incident/wiki/index.md",
+    "outputs/client-incident/wiki/cases/клиентский-инцидент-с-ненавистным-счётом-и-долгим-ответом.md",
+    "outputs/client-incident/wiki/cases/client-incident-wrong-invoice.md",
+    "outputs/client-incident/wiki_lint.py",
+    "outputs/client-incident/AGENTS.md",
+    "outputs/client-incident/wiki",
+    "outputs/client-incident/raw_manifest.yaml",
+    "outputs/client-incident/raw/12_quality_rubric.md",
+    "outputs/client-incident/raw/09_followup_email_to_customer.md",
+    "outputs/client-incident/raw/data/invoice_events.csv",
+    "outputs/client-incident/raw/data/ticket_history.csv",
+    "outputs/client-incident/raw/data/action_items.csv",
+    "outputs/client-incident/raw/data/response_times.csv",
+    "outputs/client-incident/raw/05_product_team_comment.md",
+    "outputs/client-incident/raw/01_customer_complaint_email.md",
+    "Без названия.canvas"
+  ]
+}
